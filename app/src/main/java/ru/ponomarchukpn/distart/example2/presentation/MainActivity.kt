@@ -3,7 +3,6 @@ package ru.ponomarchukpn.distart.example2.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ru.ponomarchukpn.distart.R
-import ru.ponomarchukpn.distart.example2.di.ContextModule
 import ru.ponomarchukpn.distart.example2.di.DaggerApplicationComponent
 import javax.inject.Inject
 
@@ -14,7 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     private val component by lazy {
         DaggerApplicationComponent.builder()
-            .contextModule(ContextModule(application))
+            .context(application)
+            .timeMillis(System.currentTimeMillis())
             .build()
     }
 
